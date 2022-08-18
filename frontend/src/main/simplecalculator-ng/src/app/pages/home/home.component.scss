@@ -1,0 +1,8 @@
+.hero {
+  height: 100vh;
+  background-image: radial-gradient(circle farthest-corner at 48% 28%, hsla(0, 0%, 91%, .82), #009999);
+  background-position: 0px 0px, 50% 50%;
+  background-size: auto, cover;
+  background-attachment: scroll, fixed;
+  padding-top: 112px;
+}

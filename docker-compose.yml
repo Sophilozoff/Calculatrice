@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+       jenkins:
+              image: jenkins/jenkins:lts
+              privileged: true
+              ports:
+                     - 8080:8080
+                     - 50000:50000
+              container_name: jenkins-master
+       backend-calculator:
+              build: ./backend/
+              ports:
+                     - "8080"
+              restart: always
+       frontend-calculator:
+              build: ./frontend/src/main/simplecalculator-ng
+              links:
+                     - "backend-calculator"
+              depends_on:
+                     - "backend-calculator"
+              ports:
+                     - "80:80"

@@ -1,0 +1,55 @@
+<div class="calculator-container w-container">
+  <div class="calc-background-field">
+    <div class="formula">{{upperScreenValue}}&nbsp;</div>
+    <div class="_100 calcelement">
+      <div class="text-field-wrapper w-form screen-container">
+        <fa-icon
+            [icon]="faSpinner" 
+            [spin]="true" 
+            class="loading-icon" 
+            [styles]="{'color': '#fff'}"
+            size="lg"
+            *ngIf="isLoadingVisible()"
+        ></fa-icon>
+        <form data-name="calculator io" id="wf-form-calculator-io" name="wf-form-calculator-io">
+          <input
+          class="text-field w-input"
+          data-name="screen"
+          id="screen"
+          maxlength="256"
+          name="screen"
+          placeholder="0"
+          type="text"
+          pattern="[0-9-+*/.()]"
+          [(ngModel)]="screenValue"
+          [style.background-color]="'#424242'"
+          readonly>
+        </form>
+      </div>
+    </div>
+    <div (click)="reset()" class="_25 _50 button calcelement">
+      <fa-icon [icon]="faEraser"></fa-icon>
+    </div>
+    <button (click)="showHistoryPrevious()" class="_25 button calcelement" [disabled]="!isPreviousHistoryEnabled()">
+        <fa-icon [icon]="faCaretSquareLeft"></fa-icon>
+    </button>
+    <button (click)="showHistoryNext()" class="_25 button calcelement" [disabled]="!isNextHistoryEnabled()">
+        <fa-icon [icon]="faCaretSquareRight"></fa-icon>
+    </button>
+    <button (click)="digitNumber('7')" class="_25 bold button calcelement">7</button>
+    <button (click)="digitNumber('8')" class="_25 bold button calcelement">8</button>
+    <button (click)="digitNumber('9')" class="_25 bold button calcelement">9</button>
+    <button (click)="digitSign('/')" class="_25 button calcelement" [disabled]="!isSignButtonsEnabled()">÷</button>
+    <button (click)="digitNumber('4')" class="_25 bold button calcelement">4</button>
+    <button (click)="digitNumber('5')" class="_25 bold button calcelement">5</button>
+    <button (click)="digitNumber('6')" class="_25 bold button calcelement">6</button>
+    <button (click)="digitSign('x')" class="_25 button calcelement" [disabled]="!isSignButtonsEnabled()">x</button>
+    <button (click)="digitNumber('1')" class="_25 bold button calcelement">1</button>
+    <button (click)="digitNumber('2')" class="_25 bold button calcelement">2</button>
+    <button (click)="digitNumber('3')" class="_25 bold button calcelement">3</button>
+    <button (click)="digitMinus()" class="_25 button calcelement" [disabled]="!isMinusButtonEnabled()">-</button>
+    <button (click)="digitNumber('0')" class="_25 bold button calcelement">0</button>
+    <button (click)="getResult()" class="_25 _50 button calcelement" [disabled]="!isResultButtonEnabled()">=</button>
+    <button (click)="digitSign('+')" class="_25 button calcelement" [disabled]="!isSignButtonsEnabled()">+</button>
+  </div>
+</div>
