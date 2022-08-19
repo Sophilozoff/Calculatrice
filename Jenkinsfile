@@ -9,6 +9,10 @@ node {
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
     }
 
+    stage('Checkout') {
+        checkout scm
+    }
+
     stage 'Clone the project'
     git 'https://github.com/Sophilozoff/calculatrice'
 
